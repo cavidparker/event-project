@@ -20,5 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
     path('home/', include('image_slider.urls')),
+    path('event/', include('event_name.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
