@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'event_name',
     'tinymce',
     'corsheaders',
+    'test_api',
 ]
 
 MIDDLEWARE = [
