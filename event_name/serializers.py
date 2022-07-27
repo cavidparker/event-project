@@ -8,6 +8,13 @@ class TicketSelectionSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'price', 'tax', 'description', 'eventcard']
 
 
+class EventCardDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventCard
+        fields = '__all__'
+        lookup_field = 'slug'
+
+
 class EventCardSerializer(serializers.ModelSerializer):
     ticket_pattern_list = TicketSelectionSerializer(many=True, read_only=True)
 

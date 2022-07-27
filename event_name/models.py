@@ -2,12 +2,17 @@ from multiselectfield import MultiSelectField
 from django.db import models
 from PIL import Image
 from tinymce import models as tinymce_models
+from django.utils.text import slugify
+from autoslug import AutoSlugField
+
 # Create your models here.
 
 
 class EventCard(models.Model):
     image = models.ImageField(upload_to='images')
     title = models.CharField(max_length=200)
+    # slug = models.CharField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title')
     date_and_time = models.DateTimeField()
     organisers_name = models.CharField(max_length=200)
     location = models.CharField(max_length=200, null=True, blank=True)
@@ -23,7 +28,12 @@ class EventCard(models.Model):
         max_length=10000, null=True, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.slug
+
+    # def save(self, *args, **kwargs):
+    #     if not self.slug:
+    #         self.slug = slugify(self.title)
+    #     super().save(*args, **kwargs)
 
 
 class TicketSelection(models.Model):
