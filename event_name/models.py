@@ -10,7 +10,7 @@ from autoslug import AutoSlugField
 
 class EventCard(models.Model):
     image = models.ImageField(upload_to='images')
-    # cover_image = models.ImageField(upload_to = 'images')
+    cover_image = models.ImageField(upload_to='images')
     title = models.CharField(max_length=200)
     # slug = models.CharField(max_length=200, unique=True)
     slug = AutoSlugField(populate_from='title')
